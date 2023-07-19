@@ -1,0 +1,13 @@
+<h3> Tracks </h3>
+    <% tracks.forEach(track => {  %>
+        <ul>
+            <li> 
+                <%=track.name %>
+                <% if (track.preview_url > 0) { %>
+                    <source src="<%=track.preview_url%>" type="audio/mpeg">
+                <% } else { %>
+                    <p> No preview audio </p>
+                <% } %>
+            </li>
+        </ul>
+    <% }) %>
