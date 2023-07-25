@@ -1,13 +1,23 @@
-<h3> Tracks </h3>
+<section class="track">
+    <h3> Tracks </h3>
     <% tracks.forEach(track => {  %>
-        <ul>
-            <li> 
-                <%=track.name %>
-                <% if (track.preview_url > 0) { %>
-                    <source src="<%=track.preview_url%>" type="audio/mpeg">
+        <ul class="track-name-artist-audio">
+            <li> <%=track.name %> </li>
+            <li>
+                Artist(s):
+                <% track.artists.forEach((artist, index) => { %>
+                    <%= artist.name %><%= index === track.artists.length - 1 ? '' : ',' %>
+                <% }) %>
+            </li> 
+            <li>
+                <% if (track.preview_url !== null) { %>
+                    <audio controls>
+                        <source src="<%=track.preview_url%>" type="audio/mpeg">
+                    </audio>
                 <% } else { %>
-                    <p> No preview audio </p>
+                    <p style="margin-right: 80px;"> No preview audio </p>
                 <% } %>
             </li>
         </ul>
     <% }) %>
+</section>
